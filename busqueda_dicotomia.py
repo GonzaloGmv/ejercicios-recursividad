@@ -12,11 +12,29 @@ while True:
                 tabla[i] = float(tabla[i])
             print("Los ordenaremos como tipo float")
         except:
-            try:
-                for i in range(len(tabla)):
-                    tabla[i] = str(tabla[i])
-                print("Los ordenaremos como tipo string")
-            except:
-                pass
+            print("Los ordenaremos como tipo string")
     break
 tabla.sort()
+
+#Función para buscar en la tabla
+def buscar(c, m):
+    if type(c) == type(tabla[m]) and m >= 0 and m <= len(tabla):
+        if c == tabla[m]:
+            print(c, "se encuentra en la posicion", m)
+        elif c > tabla[m]:
+            buscar(c, m+1)
+        elif c < tabla[m]:
+            buscar(c, m-1)
+    else:
+        print(c, "no esta en la tabla")
+
+#Ejecucion del ejercicio
+n = input("Escriba el valor de c: ")
+try:
+    n = int(n)
+except:
+    try:
+        n = float(n)
+    except:
+        pass
+buscar(n, int(len(tabla)/2))
