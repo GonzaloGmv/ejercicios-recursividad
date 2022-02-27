@@ -9,7 +9,8 @@ for i in range(0,6):
 for i in range(0,4):
     bandera.append('V')
 random.shuffle(bandera)
-print(bandera)
+print("Esta es la bandera desordenada: ")
+print(bandera, '\n')
 
 #Función para ordenar las fichas
 def ordenar(n, m, color):
@@ -29,4 +30,5 @@ def ordenar(n, m, color):
 #Ejecución del ejercicio
 ordenar(0,6,'R')
 ordenar(7,10,'V')
+print("Esta es la bandera ordenada: ")
 print(bandera)
