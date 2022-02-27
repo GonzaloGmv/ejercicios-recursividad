@@ -1,4 +1,6 @@
 import random
+
+#Creamos la bandera
 bandera = []
 for i in range(0,7):
     bandera.append('R')
@@ -9,18 +11,22 @@ for i in range(0,4):
 random.shuffle(bandera)
 print(bandera)
 
+#Función para ordenar las fichas
 def ordenar(n, m, color):
-    j = 0
-    for i in range(n, m):
-        j = i + 1
-        if bandera[i] != color:
-            otro_color = bandera[i]
-            bandera[i] = color
-            for i in range(j, 17):
-                if bandera[i] == color:
-                    bandera[i] = otro_color
-                    break
+    if bandera[n] != color:
+        otro_color = bandera[n]
+        bandera[n] = color
+        for i in range(n+1, 17):
+            if bandera[i] == color:
+                bandera[i] = otro_color
+                break
+        if n < m:
+            ordenar(n+1, m, color)
+    else:
+        if n < m:
+            ordenar(n+1, m, color)
 
-ordenar(0,7,'R')
-ordenar(7,11,'V')
+#Ejecución del ejercicio
+ordenar(0,6,'R')
+ordenar(7,10,'V')
 print(bandera)
