@@ -17,14 +17,18 @@ while True:
 tabla.sort()
 
 #Función para buscar en la tabla
-def buscar(c, m):
+def buscar(c, m, m0):
     if type(c) == type(tabla[m]) and m >= 0 and m <= len(tabla):
         if c == tabla[m]:
             print(c, "se encuentra en la posicion", m)
-        elif c > tabla[m]:
-            buscar(c, m+1)
-        elif c < tabla[m]:
-            buscar(c, m-1)
+        elif c > tabla[m] and m >= m0:
+            m0 = m
+            buscar(c, m+1, m0)
+        elif c < tabla[m] and m <= m0:
+            m0 = m
+            buscar(c, m-1, m0)
+        else:
+            print(c, "no esta en la tabla")
     else:
         print(c, "no esta en la tabla")
 
@@ -37,4 +41,4 @@ except:
         n = float(n)
     except:
         pass
-buscar(n, int(len(tabla)/2))
+buscar(n, int(len(tabla)/2), int(len(tabla)/2))
